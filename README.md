@@ -4,7 +4,7 @@ datasnap-iOS-gimbal-sample
   
 ## Usage
   
-Pull down this project and update your Orgination keys. We are using our Test Keys as an example:
+Pull down this project and update your Organization keys. We are using our Test Keys as an example:
   ```
       [DataSnapClient setupWithOrganizationID:@"3HRhnUtmtXnT1UHQHClAcP"
                                      APIKey:@"1EM53HT8597CC7Q5QP0U8DN73"
