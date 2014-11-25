@@ -50,6 +50,13 @@
 			remoteGlobalIDString = 39A725791994438C00F23812;
 			remoteInfo = gimbalDemo;
 		};
+		39C4233D1A25033C007AD820 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39C423381A25033B007AD820 /* DataSnapClient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 39FAE3B119894EA300709B62;
+			remoteInfo = DataSnapClient;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +98,7 @@
 		39A725BC199443DC00F23812 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		39A725D81994445700F23812 /* UserContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserContext.plist; sourceTree = "<group>"; };
 		39C423361A24F7A6007AD820 /* DataSnapClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataSnapClient.framework; path = "../../Library/Developer/Xcode/DerivedData/gimbalDemo-deeukwwfpiwxebcolmrmgycnkfmf/Build/Products/Debug-iphoneos/DataSnapClient.framework"; sourceTree = "<group>"; };
+		39C423381A25033B007AD820 /* DataSnapClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DataSnapClient.xcodeproj; path = "../iOS-SDK/DataSnapClient.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +238,7 @@
 		39A725711994438C00F23812 = {
 			isa = PBXGroup;
 			children = (
+				39C423381A25033B007AD820 /* DataSnapClient.xcodeproj */,
 				39A725831994438C00F23812 /* gimbalDemo */,
 				39A725A21994438C00F23812 /* gimbalDemoTests */,
 				39A7257C1994438C00F23812 /* Frameworks */,
@@ -325,6 +334,14 @@
 			path = "iOS-SDK";
 			sourceTree = "<group>";
 		};
+		39C423391A25033B007AD820 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39C4233E1A25033C007AD820 /* libDataSnapClient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +413,12 @@
 			mainGroup = 39A725711994438C00F23812;
 			productRefGroup = 39A7257B1994438C00F23812 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 39C423391A25033B007AD820 /* Products */;
+					ProjectRef = 39C423381A25033B007AD820 /* DataSnapClient.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				39A725791994438C00F23812 /* gimbalDemo */,
@@ -403,6 +426,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		39C4233E1A25033C007AD820 /* libDataSnapClient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDataSnapClient.a;
+			remoteRef = 39C4233D1A25033C007AD820 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		39A725781994438C00F23812 /* Resources */ = {
