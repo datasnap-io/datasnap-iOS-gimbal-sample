@@ -39,17 +39,10 @@
 		39A725BB199443D600F23812 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A725BA199443D600F23812 /* MapKit.framework */; };
 		39A725BD199443DC00F23812 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A725BC199443DC00F23812 /* Security.framework */; };
 		39A725D91994445700F23812 /* UserContext.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39A725D81994445700F23812 /* UserContext.plist */; };
-		39F263F719FF1729000165C7 /* libDataSnapClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3921CDF319F20B44001EE007 /* libDataSnapClient.a */; };
+		39C423371A24F7A6007AD820 /* DataSnapClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C423361A24F7A6007AD820 /* DataSnapClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3921CDF219F20B44001EE007 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3921CDED19F20B44001EE007 /* DataSnapClient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 39FAE3B119894EA300709B62;
-			remoteInfo = DataSnapClient;
-		};
 		39A725A01994438C00F23812 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 39A725721994438C00F23812 /* Project object */;
@@ -57,17 +50,9 @@
 			remoteGlobalIDString = 39A725791994438C00F23812;
 			remoteInfo = gimbalDemo;
 		};
-		39D82BA019FF12D90063DB43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3921CDED19F20B44001EE007 /* DataSnapClient.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 39FAE3B019894EA300709B62;
-			remoteInfo = DataSnapClient;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3921CDED19F20B44001EE007 /* DataSnapClient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DataSnapClient.xcodeproj; path = "../iOS-SDK/DataSnapClient.xcodeproj"; sourceTree = "<group>"; };
 		393F9EE019D096E000603A02 /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Common.framework; sourceTree = "<group>"; };
 		393F9EE319D096E000603A02 /* ContextCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextCore.framework; sourceTree = "<group>"; };
 		393F9EE619D096E000603A02 /* ContextLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ContextLocation.framework; sourceTree = "<group>"; };
@@ -105,6 +90,7 @@
 		39A725BA199443D600F23812 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		39A725BC199443DC00F23812 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		39A725D81994445700F23812 /* UserContext.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserContext.plist; sourceTree = "<group>"; };
+		39C423361A24F7A6007AD820 /* DataSnapClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DataSnapClient.framework; path = "../../Library/Developer/Xcode/DerivedData/gimbalDemo-deeukwwfpiwxebcolmrmgycnkfmf/Build/Products/Debug-iphoneos/DataSnapClient.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39F263F719FF1729000165C7 /* libDataSnapClient.a in Frameworks */,
 				393F9EF319D096E000603A02 /* ContextLocation.framework in Frameworks */,
 				393F9EF819D096E000603A02 /* NetworkServices.framework in Frameworks */,
 				39A4074619994DF8003EF46F /* AdSupport.framework in Frameworks */,
@@ -120,6 +105,7 @@
 				393F9EF719D096E000603A02 /* FYX.framework in Frameworks */,
 				393F9EF219D096E000603A02 /* ContextCore.framework in Frameworks */,
 				393F9EF519D096E000603A02 /* ContextProfiling.framework in Frameworks */,
+				39C423371A24F7A6007AD820 /* DataSnapClient.framework in Frameworks */,
 				39A725BD199443DC00F23812 /* Security.framework in Frameworks */,
 				39A725BB199443D600F23812 /* MapKit.framework in Frameworks */,
 				39A725B9199443D000F23812 /* libz.dylib in Frameworks */,
@@ -146,14 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3921CDEE19F20B44001EE007 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3921CDF319F20B44001EE007 /* libDataSnapClient.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		393F9EDF19D096E000603A02 /* Common.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +230,6 @@
 		39A725711994438C00F23812 = {
 			isa = PBXGroup;
 			children = (
-				3921CDED19F20B44001EE007 /* DataSnapClient.xcodeproj */,
 				39A725831994438C00F23812 /* gimbalDemo */,
 				39A725A21994438C00F23812 /* gimbalDemoTests */,
 				39A7257C1994438C00F23812 /* Frameworks */,
@@ -273,6 +250,8 @@
 		39A7257C1994438C00F23812 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39C423361A24F7A6007AD820 /* DataSnapClient.framework */,
+				39C423351A24F722007AD820 /* iOS-SDK */,
 				393F9EDF19D096E000603A02 /* Common.embeddedframework */,
 				393F9EE219D096E000603A02 /* ContextCore.embeddedframework */,
 				393F9EE519D096E000603A02 /* ContextLocation.embeddedframework */,
@@ -339,6 +318,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		39C423351A24F722007AD820 /* iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "iOS-SDK";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -353,7 +339,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				39D82BA119FF12D90063DB43 /* PBXTargetDependency */,
 			);
 			name = gimbalDemo;
 			productName = gimbalDemo;
@@ -411,12 +396,6 @@
 			mainGroup = 39A725711994438C00F23812;
 			productRefGroup = 39A7257B1994438C00F23812 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3921CDEE19F20B44001EE007 /* Products */;
-					ProjectRef = 3921CDED19F20B44001EE007 /* DataSnapClient.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				39A725791994438C00F23812 /* gimbalDemo */,
@@ -424,16 +403,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3921CDF319F20B44001EE007 /* libDataSnapClient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libDataSnapClient.a;
-			remoteRef = 3921CDF219F20B44001EE007 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		39A725781994438C00F23812 /* Resources */ = {
@@ -486,11 +455,6 @@
 			isa = PBXTargetDependency;
 			target = 39A725791994438C00F23812 /* gimbalDemo */;
 			targetProxy = 39A725A01994438C00F23812 /* PBXContainerItemProxy */;
-		};
-		39D82BA119FF12D90063DB43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DataSnapClient;
-			targetProxy = 39D82BA019FF12D90063DB43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -609,6 +573,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Frameworks/NetworkServices.embeddedframework",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/gimbalDemo-deeukwwfpiwxebcolmrmgycnkfmf/Build/Products/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gimbalDemo/gimbalDemo-Prefix.pch";
@@ -638,6 +603,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Frameworks/NetworkServices.embeddedframework",
 					"$(PROJECT_DIR)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/gimbalDemo-deeukwwfpiwxebcolmrmgycnkfmf/Build/Products/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gimbalDemo/gimbalDemo-Prefix.pch";
