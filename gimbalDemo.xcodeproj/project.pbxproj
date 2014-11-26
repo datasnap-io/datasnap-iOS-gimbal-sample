@@ -273,11 +273,11 @@
 		39A7257C1994438C00F23812 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39556F6A1A257CB600F3565D /* DataSnapClient.framework */,
 				393F9EDF19D096E000603A02 /* Common.embeddedframework */,
 				393F9EE219D096E000603A02 /* ContextCore.embeddedframework */,
 				393F9EE519D096E000603A02 /* ContextLocation.embeddedframework */,
 				393F9EE919D096E000603A02 /* ContextProfiling.embeddedframework */,
+				39556F6A1A257CB600F3565D /* DataSnapClient.framework */,
 				393F9EED19D096E000603A02 /* FYX.framework */,
 				393F9EEE19D096E000603A02 /* NetworkServices.embeddedframework */,
 				39A4074519994DF8003EF46F /* AdSupport.framework */,
