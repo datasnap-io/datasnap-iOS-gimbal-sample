@@ -1,3 +1,6 @@
 [submodule "iOS-SDK"]
 	path = iOS-SDK
 	url = git@github.com:datasnap-io/iOS-SDK.git
+[submodule "datasnap-iOS-sdk"]
+	path = datasnap-iOS-sdk
+	url = https://github.com/datasnap-io/datasnap-iOS-sdk.git
