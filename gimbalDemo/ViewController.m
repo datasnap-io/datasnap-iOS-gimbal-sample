@@ -36,7 +36,7 @@ NSString *currentTime() {
 @interface ViewController ()
 
 @property NSString *lastOfficeEnterTime;
-@property NSString *lastGerofence;
+@property NSString *lastGeofence;
 @property NSMutableString *garsString;
 
 @end
@@ -48,7 +48,7 @@ NSString *currentTime() {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     self.lastOfficeEnterTime = [NSString new];
-    self.lastGerofence = [NSString new];
+    self.lastGeofence = [NSString new];
     
     return self;
 }
@@ -126,7 +126,7 @@ NSString *currentTime() {
     [[DataSnapClient sharedClient] locationEvent:placeEvent details:@{@"name": [NSString stringWithFormat:@"%@ %@", direction, name],
                                                                       @"gar_tag": self.garsString}];
     
-    self.lastGerofence = name;
+    self.lastGeofence = name;
 }
 
 - (void)serviceStarted
@@ -151,7 +151,7 @@ NSString *currentTime() {
                                              @"Datetime": currentDate(),
                                              @"name": visit.transmitter.name.description
                                              }];
-        if( [self.lastGerofence isEqualToString:@"Peets Coffee - 4th & Harrison"] ) {
+        if( [self.lastGeofence isEqualToString:@"Peets Coffee - 4th & Harrison"] ) {
             [self localNotificationWithMessage:[[NSString alloc] initWithFormat:@"You arrived at %@. I am the Entrance Beacon. You seem bigger - I hope you can fit though the door.", currentTime()]
                                       userInfo:@{@"Event": [NSString stringWithFormat:@"Arrived to %@", visit.transmitter.name],
                                                  @"Datetime": currentDate(),
