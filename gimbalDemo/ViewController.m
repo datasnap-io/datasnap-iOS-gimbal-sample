@@ -5,12 +5,14 @@
 //  Created by Mark Watson on 8/7/14.
 //  Copyright (c) 2014 Datasnap.io. All rights reserved.
 //
+// put in communication_sent events...
 
 #import "ViewController.h"
 #import <ContextLocation/QLPlaceEvent.h>
 #import <ContextLocation/QLPlace.h>
 #import <FYX/FYXTransmitter.h>
-#import "DataSnapClient/Client.h"
+#import "Client.h"
+#import "DataSnapClient.h"
 
 // Get current datetime
 NSString* currentDate() {
@@ -100,17 +102,47 @@ NSString *currentTime() {
                                           @"Datetime": currentDate(),
                                           @"Name": placeEvent.place.name}];
         self.lastOfficeEnterTime = currentTime();
+        // TODO: put in communication_sent event
+        NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+        [content addEntriesFromDictionary:@{@"text" : @"You arrived  and I am a GeoFence"}];
+
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+        // Create dictionary from visit properties
+        NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+        [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+        [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+        [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+        NSLog(@"%@", @"Communication Sent Event... %@");
+        DeviceLog(@"%@\n", @"Communication Sent Event...");
+
     }
+
 
     // Peets Coffee
     if ( ([placeEvent.place.name isEqualToString:@"Peets Coffee - 4th & Harrison"]) && (placeEvent.eventType == QLPlaceEventTypeAt) ) {
-        uint64_t  commid= self.getAd;
+        uint64_t commid = self.getAd;
         NSString *commidString = [NSString stringWithFormat:@"%qu", commid];
         [self localNotificationWithMessage:@"Hope you're just getting coffee. NO MUFFIN FOR YOU!"
-                                  userInfo:@{@"Event": @"Arrive to Peets Geofence",
-                                          @"CommunicationId": commidString,
-                                          @"Datetime": currentDate(),
-                                          @"Name": placeEvent.place.name}];
+                                  userInfo:@{@"Event" : @"Arrive to Peets Geofence",
+                                          @"CommunicationId" : commidString,
+                                          @"Datetime" : currentDate(),
+                                          @"Name" : placeEvent.place.name}];
+
+        // TODO: put in communication_sent event
+        NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+        [content addEntriesFromDictionary:@{@"text" : @"Hope you're just getting coffee. NO MUFFIN FOR YOU!"}];
+
+
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+        // Create dictionary from visit properties
+        NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+        [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+        [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+        [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+        NSLog(@"%@", @"Communication Sent Event... %@");
+        DeviceLog(@"%@\n", @"Communication Sent Event...");
     }
 
     NSString *name = placeEvent.place.name;
@@ -160,6 +192,21 @@ NSString *currentTime() {
                                           @"Datetime": currentDate(),
                                           @"name": visit.transmitter.name.description
                                   }];
+
+        // TODO: put in communication_sent event
+        NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+        [content addEntriesFromDictionary:@{@"text" : @"I am the Entrance Beacon. You seem bigger - I hope you can fit though the door"}];
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+        // Create dictionary from visit properties
+        NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+        [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+        [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+        [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+        NSLog(@"%@", @"Communication Sent Event... %@");
+        DeviceLog(@"%@\n", @"Communication Sent Event...");
+    }
+
         if( [self.lastGerofence isEqualToString:@"Peets Coffee - 4th & Harrison"] ) {
             uint64_t  commid= self.getAd;
             NSString *commidString = [NSString stringWithFormat:@"%qu", commid];
@@ -169,12 +216,23 @@ NSString *currentTime() {
                                               @"Datetime": currentDate(),
                                               @"name": visit.transmitter.name.description
                                       }];
+            // TODO: put in communication_sent event
+            NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+            [content addEntriesFromDictionary:@{@"text" : @"I am the Entrance Beacon. You seem bigger - I hope you can fit though the door"}];
+
+            NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+            // Create dictionary from visit properties
+            NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+            [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+            [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+            [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+            NSLog(@"%@", @"Communication Sent Event... %@");
+            DeviceLog(@"%@\n", @"Communication Sent Event...");
         }
 
-    }
-
     // Hit strairs beacon
-    if ( [visit.transmitter.identifier isEqualToString:@"RN4T-K8WWG"] && (self.lastOfficeEnterTime.length > 0 ) ) {
+    if ([visit.transmitter.identifier isEqualToString:@"RN4T-K8WWG"] && (self.lastOfficeEnterTime.length > 0 ) ) {
         uint64_t  commid= self.getAd;
         NSString *commidString = [NSString stringWithFormat:@"%qu", commid];
         [self localNotificationWithMessage:@"You just came back from Peets. That better not be a muffin in your hand"
@@ -183,10 +241,19 @@ NSString *currentTime() {
                                           @"Datetime": currentDate(),
                                           @"name": visit.transmitter.name.description
                                   }];
-      //  NSLog(@"%@", "You just came back from Peets. That better not be a muffin in your hand");
+        // TODO: put in communication_sent event
+        NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+        [content addEntriesFromDictionary:@{@"text" : @"You just came back from Peets. That better not be a muffin in your hand"}];
 
-    }
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+        // Create dictionary from visit properties
+        NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+        [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+        [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
 
+        [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+        NSLog(@"%@", @"Communication Sent Event... %@");
+        DeviceLog(@"%@\n", @"Communication Sent Event...");
     // this will be invoked when an authorized transmitter is sighted for the first time
     NSString *message = [NSString stringWithFormat:@"Proximity Event: Arrived to %@", visit.transmitter.name];
 
@@ -195,7 +262,7 @@ NSString *currentTime() {
 
     [[DataSnapClient sharedClient] locationEvent:visit details:@{@"event_type": @"beacon_arrive",
             @"gar_tag": self.garsString}];
-}
+}     }
 
 - (void)receivedSighting:(FYXVisit *)visit updateTime:(NSDate *)updateTime RSSI:(NSNumber *)RSSI;
 {
@@ -208,7 +275,23 @@ NSString *currentTime() {
                                           @"CommunicationId": commidString,
                                           @"Datetime": currentDate(),
                                           @"Name": visit.transmitter.name}];
+
+        // TODO: put in communication_sent event
+        NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+        [content addEntriesFromDictionary:@{@"text" : @"You're in the kitchen. You're fat - stop eating trail mix"}];
+
+        NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+        // Create dictionary from visit properties
+        NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+        [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+        [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+        [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+        NSLog(@"%@", @"Communication Sent Event... %@");
+        DeviceLog(@"%@\n", @"Communication Sent Event...");
+
     }
+
     [[DataSnapClient sharedClient] locationEvent:visit details:@{@"rssi":RSSI,
             @"gar_tag": self.garsString}];
 }
@@ -281,6 +364,18 @@ NSString *currentTime() {
     NSArray*    notifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
     NSLog(@"Notifications--->: %@", notifications);
 
+    // TODO: put in communication_sent event
+    NSMutableDictionary *content = [[NSMutableDictionary alloc] init];
+    [content addEntriesFromDictionary:@{@"text" : @"I'd remind you to get lunch, but you really need to stop eating"}];
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] init];
+    // Create dictionary from visit properties
+    NSMutableDictionary *communication = [[NSMutableDictionary alloc] init];
+    [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
+    [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
+
+    [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+    NSLog(@"%@", @"Communication Sent Event... %@");
+    DeviceLog(@"%@\n", @"Communication Sent Event...");
 
     NSLog(@"%@", @"Lunch reminder has triggered... %@");
     DeviceLog(@"%@\n", @"Lunch reminder has triggered...");

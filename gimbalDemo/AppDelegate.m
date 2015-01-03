@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "DataSnapClient/Client.h"
-#import "DataSnapClient/DataSnapClient.h"
+#import "Client.h"
+#import "DataSnapClient.h"
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
 
@@ -81,7 +81,7 @@ const char MyConstantKey;
     }
     else {
         NSLog(@"local notification and application not active");
-        [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"communication_open"];
+        [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"ds_communication_open" status:@"background"];
     }
     // Set icon badge number to zero
     application.applicationIconBadgeNumber = 0;
@@ -92,13 +92,13 @@ const char MyConstantKey;
         NSLog(@"yes chosen");
         NSDictionary *associatedDictionary = objc_getAssociatedObject(alertView, &MyConstantKey);
         NSLog(@"associated dictionary: %@", associatedDictionary);
-        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"communication_yes"];
+        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
     }
     else if (buttonIndex == 1) {
         NSLog(@"no chosen");
         NSDictionary *associatedDictionary = objc_getAssociatedObject(alertView, &MyConstantKey);
         NSLog(@"associated dictionary: %@", associatedDictionary);
-        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"communication_no"];
+        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
     }
 }
 
