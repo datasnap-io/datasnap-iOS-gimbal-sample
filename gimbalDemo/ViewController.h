@@ -1,10 +1,7 @@
 //
-//  ViewController.h
-//  gimbalDemo
 //
-//  Created by Mark Watson on 8/7/14.
 //  Copyright (c) 2014 Datasnap.io. All rights reserved.
-//
+//  Datasnap Demo
 
 #import <UIKit/UIKit.h>
 #import <ContextLocation/QLContextPlaceConnector.h>
@@ -14,6 +11,7 @@
 NSString* date();
 
 @interface ViewController : UIViewController <QLContextPlaceConnectorDelegate, FYXServiceDelegate, FYXVisitDelegate>
++ (EventBuilder)eventBuilder;
 
 @property IBOutlet UITextField *deviceDisplay;
 

@@ -49,7 +49,18 @@ extern const char MyConstantKey;
 - (void)communicationSentEvent:(NSObject *)event;
 - (void)communicationSentEvent:(NSObject *)event details:(NSDictionary *)details;
 
-- (void)genericEvent:(NSDictionary *)eventDetails;
+- (void)genericEvent:(NSMutableDictionary *)eventDetails;
+- (void)communicationEvent:(NSMutableDictionary *)eventDetails ;
+- (void)geofenceArriveEvent:(NSMutableDictionary *)eventDetails ;
+- (void)beaconSightingEvent:(NSMutableDictionary *)eventDetails ;
+- (void)beaconDepartEvent:(NSMutableDictionary *)eventDetails ;
+
+
+
+
++ (NSDictionary *)mimicGeofenceArrive;
++ (NSDictionary *)mimicBeaconSighting;
+
 
 /**
  Return client for project

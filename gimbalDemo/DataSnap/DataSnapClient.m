@@ -8,7 +8,7 @@
 
 static DataSnapClient *__sharedInstance = nil;
 static NSMutableDictionary *__registeredIntegrationClasses = nil;
-const int eventQueueSize = 20;
+const int eventQueueSize = 1;
 static NSString *__organizationID;
 static NSString *__projectID;
 static BOOL loggingEnabled = NO;
@@ -22,7 +22,6 @@ static BOOL loggingEnabled = NO;
 }
 
 @end
-
 
 
 @interface DataSnapClient ()
@@ -65,7 +64,7 @@ static BOOL loggingEnabled = NO;
         NSData *authData = [[NSString stringWithFormat:@"%@:%@", APIKey, APISecret] dataUsingEncoding:NSUTF8StringEncoding];
         NSString *authString = [authData base64EncodedStringWithOptions:0];
         self.eventQueue = [[DataSnapEventQueue alloc] initWithSize:eventQueueSize];
-        self.requestHandler = [[DataSnapRequest alloc] initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:authString];
+        self.requestHandler = [[DataSnapRequest alloc] initWithURL:@"http://private-f349e-brian30.apiary-mock.com/notes" authString:authString];
     }
     return self;
 }
@@ -110,10 +109,122 @@ static BOOL loggingEnabled = NO;
 }
 
 
-- (void)genericEvent:(NSDictionary *)eventDetails {
++ (NSDictionary *) mimicBeaconSighting {
+
+    NSDictionary *beaconSightingEvent =  @{
+                @"event_type" : @"beacon_sighting",
+            @"organization_ids" : @"3HRhnUtmtXnT1UHQHClAcP",
+            @"project_ids" : @"3HRhnUtmtXnT1UHQHClAcP",
+        };
+
+    NSDictionary *place =  @{
+            @"id" : @"placeid",
+            @"name" : @"Entrance",
+            @"last_place" : @"placeid-3"
+    };
+    return beaconSightingEvent;
+}
+
+
++ (NSDictionary *)mimicGeofenceArrive{
+
+    NSDictionary *geofenceArriveEvent =  @{
+            @"event_type" : @"geofence_depart",
+            @"organization_ids" : @"3HRhnUtmtXnT1UHQHClAcP",
+            @"project_ids" : @"3HRhnUtmtXnT1UHQHClAcP",
+    };
+
+    NSDictionary *place =  @{
+            @"id" : @"placeid",
+            @"name" : @"Entrance",
+            @"last_place" : @"placeid-3"
+    };
+
+    NSDictionary *geofence =  @{
+            @"id": @"geofence2",
+            @"name": @"SF Gelen Park",
+            @ "geofence_circle": @"true",
+              @"radius": @"5",
+             @"coordinates": @"32.89494374592149,-117.19603832579497"
+    };
+
+    return geofenceArriveEvent;
+
+}
+
+
+- (void)genericEvent:(NSMutableDictionary *)eventDetails {
     NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
-    eventData[@"other"] = eventDetails;
-    [self.eventQueue recordEvent:eventDetails];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+
+- (void)beaconSightingEvent:(NSMutableDictionary *)eventDetails {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+- (void)beaconDepartEvent:(NSMutableDictionary *)eventDetails {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+- (void)geofenceArriveEvent:(NSMutableDictionary *)eventDetails {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+
+ - (void)geofenceDepartEvent:(NSMutableDictionary *)eventDetails {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+- (void)communicationEvent:(NSMutableDictionary *)eventDetails {
+    NSMutableDictionary *eventData = [[NSMutableDictionary alloc] initWithDictionary:[DataSnapC1 getUserAndDataSnapDictionaryWithOrgAndProj:__organizationID projId:__projectID]];
+    // eventData[@"other"] = eventDetails;
+    [eventDetails addEntriesFromDictionary:eventData];
+    [self sendEvents:eventDetails initWithURL:@"http://private-ab60-testapi695.apiary-mock.com" authString:@"qwert"];
+    // [self.eventQueue recordEvent:eventDetails];
+}
+
+- (void)sendEvents:(NSObject *)events initWithURL:(NSString *)url authString:(NSString *)authString {
+    NSString *json = [GlobalUtilities jsonStringFromObject:events];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://private-f349e-brian30.apiary-mock.com/notes"]];
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+  //  [urlRequest setValue:[NSString stringWithFormat: @"Basic %@", authString] forHTTPHeaderField:@"Authorization"];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSHTTPURLResponse *res = nil;
+    NSError *err = nil;
+    NSLog(json);
+    [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&res error:&err];
+    NSInteger responseCode = [res statusCode];
+    if((responseCode/100) != 2){
+        NSLog(@"Error sending request to %@. Response code: %d.\n", urlRequest.URL, (int) responseCode, json);
+        if(err){
+            NSLog(@"%@\n", err.description);
+        }
+    }
+    else {
+        NSLog(@"Request successfully sent to %@.\nStatus code: %d.\nData Sent: %@.\n", urlRequest.URL, (int) responseCode, json);
+    }
 }
 
 
@@ -206,8 +317,6 @@ static BOOL loggingEnabled = NO;
             @"name",
             @"vendor_id"];
 }
-
-
 
 
 + (id)sharedClient {

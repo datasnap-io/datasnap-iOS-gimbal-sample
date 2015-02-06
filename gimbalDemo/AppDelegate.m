@@ -9,9 +9,6 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "DataSnapClient.h"
-//#import "DataSnapClient.h"
-//#import "Client.h"
-//#import <DataSnapGenericFramework/DataSnapClient.h>
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
 
@@ -24,17 +21,11 @@ const char MyConstantKey;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Please put your details in here...
     [DataSnapClient setupWithOrgAndProjIDs:@"3HRhnUtmtXnT1UHQHClAcP"
                                   projectId:@"3HRhnUtmtXnT1UHQHClAcP"
                                      APIKey:@"1EM53HT8597CC7Q5QP0U8DN73"
                                   APISecret:@"CcduyakRsZ8AQ/HLdXER2EjsCOlf29CTFVk/BctFmQM"];
-    
-    //staging - ALL of these IDs are ok to keep in source, they are just demo app keys.
-   // [DataSnapClient setupWithOrganizationID:@"3HRhnUtmtXnT1UHQHClAcP"
-    //                                 APIKey:@"1EM53HT8597CC7Q5QP0U8DN73"
-    //                             APISecret:@"CcduyakRsZ8AQ/HLdXER2EjsCOlf29CTFVk/BctFmQM"];
-
-    // Handle launching from a notification
 
     NSLog(@"Started app...");
 
@@ -55,20 +46,7 @@ const char MyConstantKey;
         [[DataSnapClient sharedClient] genericEvent:@{@"event": @"App loaded from notification"}];
     }
 
-    QLContextCoreConnector *connector = [QLContextCoreConnector new];
-    [connector enableFromViewController:self.window.rootViewController success:^
-    {
-        NSLog(@"Gimbal enabled");
-    } failure:^(NSError *error) {
-        NSLog(@"Failed to initialize gimbal %@", error);
-    }];
-
     return YES;
-}
-
-- (void) clearNotifications {
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
@@ -76,7 +54,7 @@ const char MyConstantKey;
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive) {
         NSLog(@"local notification and application is active");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Gimbal Event"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Datasnap Event"
                                                         message:notification.alertBody
                                                        delegate:self
                                               cancelButtonTitle:@"Yes"
@@ -86,7 +64,7 @@ const char MyConstantKey;
     }
     else {
         NSLog(@"local notification and application not active");
-     //   [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"ds_communication_open" status:@"background"];
+      // [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"ds_communication_open" status:@"background"];
     }
     // Set icon badge number to zero
     application.applicationIconBadgeNumber = 0;

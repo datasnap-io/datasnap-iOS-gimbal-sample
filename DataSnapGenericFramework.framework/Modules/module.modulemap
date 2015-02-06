@@ -1,6 +1,0 @@
-framework module DataSnapGenericFramework {
-  umbrella header "DataSnapGenericFramework.h"
-
-  export *
-  module * { export * }
-}

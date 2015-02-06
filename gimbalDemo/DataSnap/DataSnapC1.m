@@ -120,7 +120,10 @@
     [dataDict[@"datasnap"][@"device"] addNotNilEntriesFromDictionary:carrierData];
     dataDict[@"organization_ids"] = @[orgID];
     dataDict[@"project_ids"] = @[projID];
-    
+
+
+    NSLog(@"datadictionary");
+    NSLog(@"My dictionary is %@", dataDict);
     return dataDict;
 }
 
