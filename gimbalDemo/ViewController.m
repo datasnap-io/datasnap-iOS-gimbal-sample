@@ -11,8 +11,8 @@
 #import <ContextLocation/QLPlaceEvent.h>
 #import <ContextLocation/QLPlace.h>
 #import <FYX/FYXTransmitter.h>
-#import "Client.h"
-#import "DataSnapClient.h"
+#import <DataSnapGenericFramework/DataSnapClient.h>
+//#import <DataSnapGenericFramework/
 
 // Get current datetime
 NSString* currentDate() {
@@ -373,7 +373,7 @@ NSString *currentTime() {
     [communication addEntriesFromDictionary:@{@"communication_id" : @"commidString", @"content" : content}];
     [eventData addEntriesFromDictionary:@{@"event_type" : @"ds_communication_sent", @"communication" : communication}];
 
-    [[DataSnapClient sharedClient] communicationSentEvent:eventData];
+   // [[DataSnapClient sharedClient] communicationSentEvent:eventData];
     NSLog(@"%@", @"Communication Sent Event... %@");
     DeviceLog(@"%@\n", @"Communication Sent Event...");
 

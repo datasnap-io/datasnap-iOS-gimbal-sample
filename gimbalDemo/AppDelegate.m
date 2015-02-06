@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "Client.h"
 #import "DataSnapClient.h"
+//#import "DataSnapClient.h"
+//#import "Client.h"
+//#import <DataSnapGenericFramework/DataSnapClient.h>
 #import <CoreLocation/CoreLocation.h>
 #import <objc/runtime.h>
 
@@ -33,6 +35,9 @@ const char MyConstantKey;
     //                             APISecret:@"CcduyakRsZ8AQ/HLdXER2EjsCOlf29CTFVk/BctFmQM"];
 
     // Handle launching from a notification
+
+    NSLog(@"Started app...");
+
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
@@ -81,7 +86,7 @@ const char MyConstantKey;
     }
     else {
         NSLog(@"local notification and application not active");
-        [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"ds_communication_open" status:@"background"];
+     //   [[DataSnapClient sharedClient] interactionEvent:notification.userInfo fromTap:@"ds_communication_open" status:@"background"];
     }
     // Set icon badge number to zero
     application.applicationIconBadgeNumber = 0;
@@ -92,13 +97,13 @@ const char MyConstantKey;
         NSLog(@"yes chosen");
         NSDictionary *associatedDictionary = objc_getAssociatedObject(alertView, &MyConstantKey);
         NSLog(@"associated dictionary: %@", associatedDictionary);
-        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
+     //   [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
     }
     else if (buttonIndex == 1) {
         NSLog(@"no chosen");
         NSDictionary *associatedDictionary = objc_getAssociatedObject(alertView, &MyConstantKey);
         NSLog(@"associated dictionary: %@", associatedDictionary);
-        [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
+      //  [[DataSnapClient sharedClient] interactionEvent:associatedDictionary fromTap:@"ds_communication_open" status:@"foreground"];
     }
 }
 
